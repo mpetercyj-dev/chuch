@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to Grace Community Church. Join us for worship, fellowship and service.">
+  <title>Grace Community Church</title>
+  <style>
+    :root {
+      --navy: #172b4d;
+      --gold: #c99b45;
+      --cream: #f7f4ee;
+      --ink: #263238;
+      --muted: #68727d;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      background: var(--navy);
+      color: var(--white);
+      padding: 9px 6%;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font: 13px Arial, sans-serif;
+    }
+
+    header {
+      background: var(--white);
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+    }
+
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-size: 25px;
+    }
+
+    .brand-name { font-size: 21px; font-weight: bold; line-height: 1.1; }
+    .brand-tag { font: 10px Arial, sans-serif; letter-spacing: 2px; color: var(--muted); }
+
+    nav { display: flex; align-items: center; gap: 25px; font: 14px Arial, sans-serif; }
+    nav a:hover { color: var(--gold); }
+
+    .nav-button, .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #1c2635;
+      padding: 12px 21px;
+      border-radius: 3px;
+      font: bold 13px Arial, sans-serif;
+      letter-spacing: .3px;
+      transition: .2s;
+    }
+
+    .nav-button:hover, .button:hover { background: #dfb766; transform: translateY(-1px); }
+
+    .hero {
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      padding: 90px 8%;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(13,29,52,.88), rgba(13,29,52,.42)),
+        url("https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+
+    .hero-content { max-width: 650px; }
+    .eyebrow {
+      color: #edc875;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font: bold 12px Arial, sans-serif;
+      margin-bottom: 18px;
+    }
+
+    h1 { font-size: clamp(42px, 6vw, 68px); line-height: 1.08; margin-bottom: 22px; font-weight: normal; }
+    .hero p { max-width: 540px; color: #edf0f4; font: 17px/1.8 Arial, sans-serif; margin-bottom: 30px; }
+
+    .section { padding: 82px 8%; }
+    .section-heading { text-align: center; max-width: 680px; margin: 0 auto 42px; }
+    .section-heading .eyebrow { color: var(--gold); margin-bottom: 10px; }
+    h2 { color: var(--navy); font-size: clamp(30px, 4vw, 42px); font-weight: normal; line-height: 1.2; margin-bottom: 13px; }
+    .section-heading p { color: var(--muted); font: 15px/1.8 Arial, sans-serif; }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+      max-width: 1120px;
+      margin: auto;
+    }
+
+    .welcome-image {
+      min-height: 390px;
+      border-radius: 4px;
+      background: url("https://images.unsplash.com/photo-1519491050282-cf00c82424b4?auto=format&fit=crop&w=1000&q=85") center/cover;
+    }
+
+    .welcome-copy .eyebrow { color: var(--gold); margin-bottom: 12px; }
+    .welcome-copy p { color: var(--muted); font: 15px/1.9 Arial, sans-serif; margin: 16px 0 25px; }
+
+    .cream { background: var(--cream); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1120px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 30px 27px;
+      border: 1px solid #eee9df;
+      border-radius: 4px;
+    }
+
+    .card-icon { color: var(--gold); font-size: 30px; margin-bottom: 15px; }
+    .card h3 { color: var(--navy); font-size: 22px; font-weight: normal; margin-bottom: 10px; }
+    .card p { color: var(--muted); font: 14px/1.8 Arial, sans-serif; }
+
+    .service-banner {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 65px 8%;
+    }
+
+    .service-banner h2 { color: var(--white); }
+    .service-banner p { color: #d8dfeb; font: 15px/1.8 Arial, sans-serif; margin: 0 auto 25px; max-width: 650px; }
+    .service-banner .eyebrow { color: #edc875; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .contact-info p { color: var(--muted); font: 15px/1.9 Arial, sans-serif; margin: 12px 0; }
+    .contact-info strong { color: var(--navy); }
+    .contact-form { display: grid; gap: 13px; }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      font: 14px Arial, sans-serif;
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form button { border: 0; cursor: pointer; justify-self: start; }
+
+    footer {
+      background: #101f36;
+      color: #dce2eb;
+      padding: 28px 8%;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      font: 13px Arial, sans-serif;
+    }
+
+    @media (max-width: 800px) {
+      header { align-items: flex-start; flex-direction: column; }
+      nav { flex-wrap: wrap; gap: 14px 20px; }
+      .welcome-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cards { grid-template-columns: 1fr; }
+      .hero { min-height: 500px; padding: 75px 7%; }
+    }
+
+    @media (max-width: 480px) {
+      .topbar { padding: 10px 5%; }
+      header { padding: 16px 5%; }
+      nav { font-size: 13px; }
+      .section { padding: 60px 6%; }
+      .welcome-image { min-height: 260px; }
+      .hero { min-height: 470px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Welcome to Grace Community Church</span>
+    <span>Sunday Worship: 9:00 AM &amp; 11:00 AM</span>
+  </div>
+
+  <header>
+    <a class="brand" href="#home" aria-label="Grace Community Church home">
+      <span class="brand-mark">✝</span>
+      <span>
+        <span class="brand-name">GRACE COMMUNITY</span><br>
+        <span class="brand-tag">CHURCH</span>
+      </span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#ministries">Ministries</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-button" href="#contact">Plan a Visit</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Faith • Hope • Community</div>
+        <h1>A place to belong, believe and grow.</h1>
+        <p>Come as you are and experience meaningful worship, biblical teaching and a welcoming church family. There is a place for you here.</p>
+        <a class="button" href="#services">Join Us This Sunday</a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="welcome-grid">
+        <div class="welcome-image" role="img" aria-label="Church interior with rows of seats"></div>
+        <div class="welcome-copy">
+          <div class="eyebrow">You are welcome here</div>
+          <h2>Growing together in faith and love.</h2>
+          <p>At Grace Community Church, we believe church is more than a building. It is a family where people can encounter God, build genuine relationships and discover purpose.</p>
+          <p>Whether you are exploring faith or have been a Christian for many years, we would be glad to welcome you.</p>
+          <a class="button" href="#contact">Get to Know Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream" id="ministries">
+      <div class="section-heading">
+        <div class="eyebrow">Find your place</div>
+        <h2>There is room for everyone.</h2>
+        <p>Connect, serve and grow through the different ministries in our church community.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">♡</div>
+          <h3>Children's Ministry</h3>
+          <p>A safe and engaging environment where children learn about God's love through Bible stories, activities and friendship.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">✦</div>
+          <h3>Youth Ministry</h3>
+          <p>A place for young people to build friendships, strengthen their faith and grow into responsible, purpose-driven leaders.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">♧</div>
+          <h3>Community Outreach</h3>
+          <p>Putting faith into action by supporting our neighbours, serving those in need and making a positive difference.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="service-banner" id="services">
+      <div class="eyebrow">Worship with us</div>
+      <h2>We look forward to meeting you.</h2>
+      <p>Join us for worship, prayer, biblical teaching and fellowship. Bring your family and invite a friend.</p>
+      <a class="button" href="#contact">Plan Your Visit</a>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-heading">
+        <div class="eyebrow">Get in touch</div>
+        <h2>We would love to hear from you.</h2>
+        <p>Have a question, need prayer or want to learn more about our church? Send us a message.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Visit Grace Community Church</h3>
+          <p><strong>Address:</strong> Add your church address here</p>
+          <p><strong>Sunday worship:</strong> 9:00 AM and 11:00 AM</p>
+          <p><strong>Phone:</strong> Add your church phone number</p>
+          <p><strong>Email:</strong> Add your church email address</p>
+        </div>
+
+        <form class="contact-form" action="#" method="get">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+          <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required>
+          <textarea name="message" placeholder="How can we help you?" aria-label="Your message" required></textarea>
+          <button class="button" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Grace Community Church. All rights reserved.</span>
+    <span>Built on faith. Growing in community.</span>
+  </footer>
+
+</body>
+</html>
